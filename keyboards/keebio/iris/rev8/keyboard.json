@@ -160,7 +160,7 @@
         },
         "driver": "ws2812",
         "split_count": [34, 34],
-        "max_brightness": 120,
+        "max_brightness": 30,
         "layout": [
             {"matrix": [0,0], "flags":4, "x":0, "y":5},
             {"flags":2, "x":8, "y":5},

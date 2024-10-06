@@ -26,3 +26,17 @@ The Iris Rev. 6 and Rev. 6.1 PCBs are nearly identical and have the same firmwar
 To enable Lighting controls in VIA, you will need the `rev6a` firmware. See [Enabling Iris Rev. 6 VIA RGB Controls](https://docs.keeb.io/iris-rev6-rgb-via) for more details.
 
 Both the Rev. 6 and Rev. 6.1 PCBs are compatible with the `rev6a` firmware.
+
+## Iris Rev. 8 Personal Build
+
+To create file for flashing
+    `qmk compile -kb keebio/iris/rev8 -km barryotieno`
+# Layout
+## Colemak DH
+![Alt text](img/colemak-dh_layout.png?raw=true "clean desktop image")
+## Qwerty
+![Alt text](img/qwerty_layout.png?raw=true "clean desktop image")
+## Layer 1
+![Alt text](img/layer1.png?raw=true "clean desktop image")
+## Layer 2
+![Alt text](img/layer2.png?raw=true "clean desktop image")

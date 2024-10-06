@@ -8,7 +8,6 @@ enum custom_layer {
    _QWERTY,
    _L1,
    _L2,
-   _WKS,
 };
 
 enum {
@@ -36,9 +35,6 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color_all(0,0,0);
             break;
         case _L2:
-            rgb_matrix_set_color_all(0,0,0);
-            break;
-         case _WKS:
             rgb_matrix_set_color_all(0,0,0);
             break;
         default:
@@ -94,26 +90,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                              KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, RGB_TOG,                            KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_PSCR, _______,
+     KC_NUM,   MS_BTN1, MS_UP,   MS_BTN2, _______, RGB_TOG,                           _______, _______, _______, _______, KC_PSCR, QK_CLEAR_EEPROM,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_CAPS, KC_SCRL, _______, _______, _______, RGB_MOD,                            KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+     KC_CAPS, MS_LEFT, MS_DOWN, MS_RGHT, _______, RGB_MOD,                            MS_WHLL, MS_WHLD, MS_WHLU,  MS_WHLR, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     QK_CLEAR_EEPROM, _______, _______, _______, RGB_VAD, RGB_VAI, _______,          _______, KC_NUM, _______, _______, _______, _______, _______,
+     KC_SCRL, MS_BTN4, MS_BTN3, MS_BTN5, RGB_VAD, RGB_VAI, _______,           _______,_______, _______, _______, _______, _______, TG(_QWERTY),
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______, _______, _______
-                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
-  ),
-   [_WKS] = LAYOUT(
-  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
-  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
-  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
-  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
-  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LGUI, _______, _______,                   _______, _______, KC_RALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 };
@@ -123,10 +106,8 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #   if defined(KEYBOARD_keebio_iris_rev7) || defined(KEYBOARD_keebio_iris_rev8)
    [_COLEMAK] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_Z, KC_Y), ENCODER_CCW_CW(KC_PGDN, KC_PGUP) },
    [_QWERTY] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_Z, KC_Y), ENCODER_CCW_CW(KC_PGDN, KC_PGUP) },
-   [_L1] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_PGDN, KC_PGUP) },
+   [_L1] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_U, LCTL(KC_R)), ENCODER_CCW_CW(KC_PGDN, KC_PGUP) },
    [_L2] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_PGDN, KC_PGUP) },
-   [_WKS] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_PGDN, KC_PGUP) },
-
 
 #   else
     [_MAIN] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
